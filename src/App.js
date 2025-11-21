@@ -74,6 +74,8 @@ export default function MyApp() {
   );
 }
 */
+
+/*
 import {useState}  from 'react'
 function MyButton() {
   const [count, setCount] = useState(0);
@@ -92,5 +94,48 @@ export default function MyApp() {
     <>
     <MyButton/>
     </>
+  );
+} */
+
+/*
+import {useState} from 'react'
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton/>
+      <MyButton/>
+    </div>
+  );
+}
+function MyButton() {
+  const [count,setCount]=useState(0);
+  function handleClick() {
+    setCount(count+1);
+  }
+  return (
+    <button onClick={handleClick}> Clicked {count} times</button>
+  );
+}
+  */
+
+import {useState} from 'react'
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+  function handleClick() {
+    setCount(count+1);
+  }
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} x={handleClick}/>
+      <MyButton count={count} x={handleClick}/>
+    </div>
+  );
+}
+
+function MyButton({count, x}) {
+  return (
+  <button onClick={x}>Clicked {count} times</button>
   );
 }
